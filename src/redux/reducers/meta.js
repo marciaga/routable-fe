@@ -14,7 +14,10 @@ const initialState = {};
   return state.filter((todo, i) => i !== action.payload.index)
 */
 export const metaReducer = createReducer(initialState, {
-  [meta.ADD_API_KEY]: (state, action) => {
-    state.apiKey = action.payload.textInputApiKey;
+  [meta.ADD_USER_DATA]: (state, action) => {
+    const { textInputUsername, textInputApiKey } = action.payload; 
+
+    state.apiKey = textInputApiKey;
+    state.username = textInputUsername;
   },
 });

@@ -1,35 +1,46 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 import { Form } from '../components/form';
-import { addApiKey } from '../redux/actions/meta';
+import { MainContent, CenteredContent } from '../components/styles';
+import { addUserData } from '../redux/actions/meta';
 
 const actionCreators = {
-  addApiKey,
+  addUserData,
 };
 
 const formConfig = [{ 
+  component: 'TextInput',
+  type: 'text',
+  name: 'textInputUsername',
+  label: 'Enter your Username',
+}, {
   component: 'TextInput',
   type: 'text',
   name: 'textInputApiKey',
   label: 'Enter your API key',
 }];
 
-const ConnectedHome = ({ addApiKey }) => {
+const ConnectedHome = ({ addUserData, history }) => {
+  const handleFormSubmit = (params) => {
+    addUserData(params);
+    history.push('/prioritizer');
+  };
+
   return (
-    <>
-    <h1>
-      Home Page
-    </h1>
-    <Form
-      config={formConfig}
-      submit={addApiKey}
-    />
-    </>
+    <MainContent>
+      <CenteredContent>
+        <Form
+          config={formConfig}
+          submit={handleFormSubmit}
+        />
+      </CenteredContent>
+    </MainContent>
   );
 };
 
-export const Home = connect(
+export const Home = withRouter(connect(
   null,
   actionCreators,
-)(ConnectedHome);
+)(ConnectedHome));

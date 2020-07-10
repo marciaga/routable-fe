@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { InputWrapper } from './styles';
+
+
 export const TextInput = ({
   type,
   name,
@@ -7,11 +10,13 @@ export const TextInput = ({
   onChange,
 }) => {
   return (
-    <input
-      type={type}
-      name={name}
-      value={value}
-      onChange={onChange}
-    />
+    <InputWrapper>
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+      />
+    </InputWrapper>
   );
 };
