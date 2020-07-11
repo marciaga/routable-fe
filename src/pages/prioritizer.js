@@ -1,29 +1,38 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { MainContent, CenteredContent } from '../components/styles';
+import { MainContent } from '../components/styles';
 import { Repos } from '../components/repos';
 import { get } from '../utils/http';
 import { addRepos } from '../redux/actions/repos';
+import { addIssues } from '../redux/actions/issues';
 
-const actionCreators = { addRepos };
+const actionCreators = { addRepos, addIssues };
 
 const ConnectedPrioritizer = ({
+  addIssues,
   addRepos,
-  apiKey,
+  issues,
+  meta,
   repos,
-  username,
 }) => {
+  const { apiKey, username } = meta;
+
   useEffect(() => {
     const fetchRepos = async () => {
       if (!username || !apiKey) {
         return; // TODO - add messaging for user
       }
 
-      const qs = `access_token=${apiKey}`;
-      const url = `${process.env.REACT_APP_GITHUB_API_URL}/users/${username}/repos?${qs}`;
+      const url = `${process.env.REACT_APP_GITHUB_API_URL}/users/${username}/repos`;
+      const opts = {
+        headers: {
+          Authorization: `token ${apiKey}`
+        },
+      };
+
       try {
-        const result = await get(url);
+        const result = await get(url, opts);
 
         if (!result) {
           // TODO handle
@@ -31,7 +40,6 @@ const ConnectedPrioritizer = ({
 
         addRepos(result);
       } catch (error) {
-        console.log('error: ', error);
         // TODO handle
       }
     };
@@ -44,14 +52,19 @@ const ConnectedPrioritizer = ({
 
   return (
     <MainContent>
-      <Repos repos={repos} />
+      <Repos
+        addIssues={addIssues}
+        initialIssues={issues}
+        meta={meta}
+        repos={repos}
+        />
     </MainContent>
   );
 };
 
-const mapState = ({ meta, repos }) => ({
-  username: meta.username,
-  apiKey: meta.apiKey,
+const mapState = ({ meta, repos, issues }) => ({
+  issues,
+  meta,
   repos,
 });
 

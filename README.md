@@ -1,68 +1,44 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Github Issues Prioritizer
 
-## Available Scripts
+# Run the app locally
 
-In the project directory, you can run:
+```
+$ npm install
+$ npm start
+```
 
-### `yarn start`
+You'll need a Github username and API Token.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Sign in using the form on the home page.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Click on a Repo name.
 
-### `yarn test`
+If it has issues, they will be displayed in the right column. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Drag and Drop to reorder (i.e. prioritize). Edits are persisted to local storage and read on page reloads.
 
-### `yarn build`
+## TODOs - i.e. things I would have done if I hadn't run out of time before implementing 
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* In lieu of the avatar, I went with the assignee's name.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+* Responsive - unlike other CSS in JS solutions, with styled components, which is just CSS, you can use media queries. I'd love to have set up a layout component with breakpoints.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Tests. I love tests. Particularly Cypress.
 
-### `yarn eject`
+* Production env build/deploy pipeline.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Proper UI messaging - loading spinners, snackbar messages, confirmation dialogs, etc.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* Better Styled Components implementation/separate concerns
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* Real back end. Set up a Node HTTP framework like Express, although my favorite (Hapi.js) just announced it's sunsetting the project, so I need to find a new favorite. This data as-is is pretty well-structured for a NOSQL database solution like MongoDB.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Exception tracking and logging solution. New Relic Browser or LogRocket, Sentry, etc.
 
-## Learn More
+* The Redux implementation could be better-factored. The two "models" are nearly identical in their boilerplate.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* Better data-fetching. A solution using Redux thunks most likely.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Better factored components. Aimed for some generality but could do better.
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+* Eslint - I prefer the Airbnb rules. I would have migrated to those.

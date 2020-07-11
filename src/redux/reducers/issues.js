@@ -6,18 +6,9 @@ const initialState = {};
 
 export const issuesReducer = createReducer(initialState, {
   [issues.ADD_ISSUES]: (state, action) => {
-    // const { repoId, issues } = action.payload;
-    // console.log('repoId: ', repoId);
-    // console.log('issues: ', issues);
-    // const prevIssues = state[repoId];
-    // console.log('prevIssues: ', prevIssues);
+    const repoId = Object.keys(action.payload)[0];
+    const values = Object.values(action.payload)[0];
 
-    // if (!prevIssues) {
-    //   // the key has no value, so assign the fetched issues
-    //   state[repoId] = issues;
-    //   return;
-    // }
-
-    // return state;
+    state[repoId] = values;
   },
 });

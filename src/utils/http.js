@@ -1,6 +1,6 @@
-export const get = async (endpoint) => {
+export const get = async (endpoint, opts = {}) => {
   try {
-    const response = await fetch(endpoint);
+    const response = await fetch(endpoint, opts);
 
     if (!response.ok) {
       throw new Error('Something went wrong. Try again later.');
