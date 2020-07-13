@@ -17,6 +17,10 @@ If it has issues, they will be displayed in the right column.
 
 Drag and Drop to reorder (i.e. prioritize). Edits are persisted to local storage and read on page reloads.
 
+
+Note the inclusion of the .env.development file. Since the production build of the app is a static bundle, there should not be any sensitive variables in the .env file, which means it's safe to check in. 
+
+
 ## TODOs - i.e. things I would have done if I hadn't run out of time before implementing 
 
 * In lieu of the avatar, I went with the assignee's name.
